@@ -10,6 +10,7 @@ HungryBuddy helps users discover meals, search recipes, and follow ingredient li
 
 Repository: https://github.com/ST10157844/HungryBuddy  
 XML migration branch: https://github.com/ST10157844/HungryBuddy/tree/xml-migration
+YOUTUBE Link: https://youtu.be/kaHjeIYaRYA
 
 
 Implemented features
