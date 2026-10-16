@@ -106,4 +106,10 @@
 
     </FrameLayout>
 
+    <!-- Bottom Navigation Bar -->
+    <include
+        layout="@layout/view_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

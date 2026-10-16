@@ -16,6 +16,7 @@ import com.example.hungrybuddy.ui.adapters.RecipeAdapter
 import com.example.hungrybuddy.viewmodel.RecipeViewModel
 import kotlinx.coroutines.launch
 import android.content.Intent
+import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
 
 class HomeActivity : ComponentActivity() {
 
@@ -36,11 +37,21 @@ class HomeActivity : ComponentActivity() {
         setupButtons()
         observeRecipes()
 
+        // Initialize XML bottom navigation.
+        BottomNavigationHelper.setup(this)
+
         // Load initial recipes when Home opens.
         // "chicken" is a starter search query.
-        if (savedInstanceState == null) {
+
+        // Load recipes whenever the Home ViewModel
+        // has no data and is not already loading.
+        if (
+            viewModel.recipes.value.isEmpty() &&
+            !viewModel.isLoading.value
+        ) {
             viewModel.searchRecipes("chicken")
         }
+
     }
 
     private fun setupRecyclerView() {
@@ -90,9 +101,17 @@ class HomeActivity : ComponentActivity() {
 
     private fun setupButtons() {
 
+
         binding.btnSearchRecipes.setOnClickListener {
-            showSearchDialog()
+
+            val intent = Intent(
+                this,
+                SearchActivity::class.java
+            )
+
+            startActivity(intent)
         }
+
 
 
         binding.btnSettings.setOnClickListener {

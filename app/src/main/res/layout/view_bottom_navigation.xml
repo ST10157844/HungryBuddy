@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomNavigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="#FFFFFF"
+    android:elevation="8dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <!-- Home Navigation -->
+    <TextView
+        android:id="@+id/navHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="56dp"
+        android:gravity="center"
+        android:drawableTop="@android:drawable/ic_menu_view"
+        android:drawablePadding="5dp"
+        android:text="Home"
+        android:textSize="13sp"
+        android:textColor="#E66B31"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <!-- Search Navigation -->
+    <TextView
+        android:id="@+id/navSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="56dp"
+        android:gravity="center"
+        android:drawableTop="@android:drawable/ic_menu_search"
+        android:drawablePadding="5dp"
+        android:text="Search"
+        android:textSize="13sp"
+        android:textColor="#777777"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <!-- Settings Navigation -->
+    <TextView
+        android:id="@+id/navSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="56dp"
+        android:gravity="center"
+        android:drawableTop="@android:drawable/ic_menu_manage"
+        android:drawablePadding="5dp"
+        android:text="Settings"
+        android:textSize="13sp"
+        android:textColor="#777777"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground" />
+
+</LinearLayout>

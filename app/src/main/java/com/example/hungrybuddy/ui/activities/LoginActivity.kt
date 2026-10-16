@@ -23,6 +23,26 @@ class LoginActivity : ComponentActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        // Check whether Firebase already has a signed-in user.
+        if (auth.currentUser != null) {
+
+            // Skip Login and open the Home screen.
+            val intent = Intent(
+                this,
+                HomeActivity::class.java
+            )
+
+            // Remove Login from the navigation back stack.
+            intent.flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
+            finish()
+            return
+        }
+
+
         binding.btnLogin.setOnClickListener {
             loginUser()
         }

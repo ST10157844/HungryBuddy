@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.hungrybuddy.databinding.ActivitySettingsBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
 
 class SettingsActivity : ComponentActivity() {
 
@@ -30,10 +31,15 @@ class SettingsActivity : ComponentActivity() {
             return
         }
 
+
         setupAccount()
         setupLanguage()
         setupDarkMode()
         setupButtons()
+
+// Initialize bottom navigation.
+        BottomNavigationHelper.setup(this)
+
     }
 
     private fun setupAccount() {
