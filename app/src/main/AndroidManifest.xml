@@ -17,12 +17,6 @@
         android:theme="@style/Theme.HungryBuddy">
 
         <!-- Original Compose Activity: preserved -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.HungryBuddy"
-            android:windowSoftInputMode="adjustResize" />
 
         <!-- New XML Login Activity: temporary launcher -->
         <activity

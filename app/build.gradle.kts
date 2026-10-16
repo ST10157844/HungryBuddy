@@ -1,6 +1,6 @@
+
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
 }
 
@@ -15,7 +15,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner =
+            "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -25,57 +26,54 @@ android {
             }
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildFeatures {
-        compose = true
+        // Traditional Android XML layouts
         viewBinding = true
     }
 }
 
 dependencies {
-    // Traditional Android XML user interface
+
+    // Traditional Android Views
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    // Glide - loading recipe images into XML ImageViews
-    implementation("com.github.bumptech.glide:glide:4.16.0")
 
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
+    // Activity support and ViewModel delegates
+    implementation("androidx.activity:activity-ktx:1.10.1")
+
+    // Android Core
     implementation(libs.androidx.core.ktx)
+
+    // Lifecycle and ViewModel
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
-    // Retrofit - REST API communication
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
+
+    // Kotlin Coroutines and StateFlow support
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
+    // Retrofit - TheMealDB REST API
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
 
-    // Coil - loading recipe images from the internet
-    implementation("io.coil-kt.coil3:coil-compose:3.6.0")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.6.0")
-
-    // Navigation
-    implementation("androidx.navigation:navigation-compose:2.9.6")
-
-    // Material icons
-    implementation("androidx.compose.material:material-icons-extended")
+    // Glide - Recipe images in XML ImageViews
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // Firebase Authentication
     implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
     implementation("com.google.firebase:firebase-auth")
 
+    // Unit testing
     testImplementation(libs.junit)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+
+    // Android instrumentation testing
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-    debugImplementation(libs.androidx.compose.ui.tooling)
 }
