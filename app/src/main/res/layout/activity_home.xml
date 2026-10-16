@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF9F2"
+    android:padding="20dp">
+
+    <!-- App Title -->
+    <TextView
+        android:id="@+id/tvHomeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🍽️ HungryBuddy"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#E66B31"
+        android:gravity="center"
+        android:layout_marginTop="20dp" />
+
+    <!-- Welcome Message -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Discover delicious recipes"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:gravity="center"
+        android:layout_marginTop="16dp" />
+
+    <!-- Description -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search for your favourite meals and discover something new to cook today!"
+        android:textSize="15sp"
+        android:textColor="#666666"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Search Recipes Button -->
+    <Button
+        android:id="@+id/btnSearchRecipes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Recipes"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#E66B31" />
+
+    <!-- Settings Button -->
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:layout_marginTop="8dp" />
+
+    <!-- Recipe Section Heading -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Explore Recipes"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Recipe Content -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- RecyclerView for Recipes -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:clipToPadding="false"
+            android:paddingBottom="12dp" />
+
+        <!-- Empty State -->
+        <TextView
+            android:id="@+id/tvEmptyRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Find delicious meals using recipe search!"
+            android:textSize="15sp"
+            android:textColor="#777777"
+            android:gravity="center"
+            android:padding="16dp" />
+
+        <!-- Loading Indicator -->
+        <ProgressBar
+            android:id="@+id/progressRecipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- Bottom Navigation Bar -->
+    <include
+        layout="@layout/view_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
