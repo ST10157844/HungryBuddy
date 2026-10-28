@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Existing project colours retained -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +8,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- HungryBuddy light-theme palette -->
+    <color name="hb_background">#FFF9F2</color>
+    <color name="hb_orange">#E66B31</color>
+    <color name="hb_orange_dark">#C94C1C</color>
+    <color name="hb_text_primary">#333333</color>
+    <color name="hb_text_secondary">#555555</color>
+    <color name="hb_text_muted">#777777</color>
+    <color name="hb_card_background">#FFFFFF</color>
+    <color name="hb_navigation_background">#FFFFFF</color>
+    <color name="hb_on_accent">#FFFFFF</color>
+    <color name="hb_danger_button">#D84315</color>
+    <color name="hb_error">#D32F2F</color>
 </resources>

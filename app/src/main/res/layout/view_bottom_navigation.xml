@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center"
-    android:background="#FFFFFF"
+    android:background="@color/hb_navigation_background"
     android:elevation="8dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
@@ -23,7 +23,7 @@
         android:drawablePadding="5dp"
         android:text="Home"
         android:textSize="13sp"
-        android:textColor="#E66B31"
+        android:textColor="@color/hb_orange"
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground" />
@@ -40,7 +40,7 @@
         android:drawablePadding="5dp"
         android:text="Search"
         android:textSize="13sp"
-        android:textColor="#777777"
+        android:textColor="@color/hb_text_muted"
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground" />
@@ -57,7 +57,7 @@
         android:drawablePadding="5dp"
         android:text="Settings"
         android:textSize="13sp"
-        android:textColor="#777777"
+        android:textColor="@color/hb_text_muted"
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground" />

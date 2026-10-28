@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.HungryBuddy" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.HungryBuddy"
+        parent="Theme.AppCompat.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/hb_orange</item>
+        <item name="colorPrimaryDark">@color/hb_orange_dark</item>
+        <item name="colorAccent">@color/hb_orange</item>
+        <item name="android:windowBackground">@color/hb_background</item>
+
+    </style>
+
 </resources>

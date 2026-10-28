@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import android.content.Intent
 import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
 
-class HomeActivity : ComponentActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 

@@ -5,12 +5,14 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hungrybuddy.databinding.ActivitySettingsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
+import androidx.appcompat.app.AppCompatDelegate
+import com.example.hungrybuddy.utils.SettingsPreferences
 
-class SettingsActivity : ComponentActivity() {
+class SettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
     private lateinit var auth: FirebaseAuth
@@ -59,15 +61,46 @@ class SettingsActivity : ComponentActivity() {
 
     private fun setupDarkMode() {
 
-        // Dark mode requires a separate DayNight theme
-        // implementation and replacement of fixed XML colors.
-        // Disable the switch until that implementation is ready.
-        binding.switchDarkMode.isChecked = false
-        binding.switchDarkMode.isEnabled = false
+    // Restore the user's previously saved appearance preference.
+    val darkModeEnabled =
+        SettingsPreferences.isDarkModeEnabled(this)
+
+    // Display the saved state before registering the listener.
+    binding.switchDarkMode.isChecked = darkModeEnabled
+    binding.switchDarkMode.isEnabled = true
+
+    binding.tvMoreSettings.text =
+        if (darkModeEnabled) {
+            "Dark mode is enabled. Your preference is saved."
+        } else {
+            "Choose dark mode to change the app appearance."
+        }
+
+    // Save the preference and apply the theme when the switch changes.
+    binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+
+        SettingsPreferences.setDarkModeEnabled(
+            this,
+            isChecked
+        )
 
         binding.tvMoreSettings.text =
-            "Dark mode and additional language options are coming soon."
+            if (isChecked) {
+                "Dark mode is enabled. Your preference is saved."
+            } else {
+                "Light mode is enabled. Your preference is saved."
+            }
+
+        val nightMode =
+            if (isChecked) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+
+        AppCompatDelegate.setDefaultNightMode(nightMode)
     }
+}
 
     private fun setupButtons() {
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF9F2"
+    android:background="@color/hb_background"
     android:padding="20dp">
 
     <!-- App Title -->
@@ -15,7 +15,7 @@
         android:text="🍽️ HungryBuddy"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="#E66B31"
+        android:textColor="@color/hb_orange"
         android:gravity="center"
         android:layout_marginTop="20dp" />
 
@@ -26,7 +26,7 @@
         android:text="Discover delicious recipes"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#333333"
+        android:textColor="@color/hb_text_primary"
         android:gravity="center"
         android:layout_marginTop="16dp" />
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Search for your favourite meals and discover something new to cook today!"
         android:textSize="15sp"
-        android:textColor="#666666"
+        android:textColor="@color/hb_text_secondary"
         android:gravity="center"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="24dp" />
@@ -47,8 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search Recipes"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#E66B31" />
+        android:textColor="@color/hb_on_accent"
+        android:backgroundTint="@color/hb_orange" />
 
     <!-- Settings Button -->
     <Button
@@ -65,7 +65,7 @@
         android:text="Explore Recipes"
         android:textSize="21sp"
         android:textStyle="bold"
-        android:textColor="#333333"
+        android:textColor="@color/hb_text_primary"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="12dp" />
 
@@ -92,7 +92,7 @@
             android:layout_gravity="center"
             android:text="Find delicious meals using recipe search!"
             android:textSize="15sp"
-            android:textColor="#777777"
+            android:textColor="@color/hb_text_muted"
             android:gravity="center"
             android:padding="16dp" />
 

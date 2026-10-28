@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF9F2"
+    android:background="@color/hb_background"
     android:padding="16dp">
 
     <!-- Back Button -->
@@ -13,8 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#E66B31" />
+        android:textColor="@color/hb_on_accent"
+        android:backgroundTint="@color/hb_orange" />
 
     <!-- Screen Heading -->
     <TextView
@@ -23,7 +23,7 @@
         android:text="Search Recipes"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="#E66B31"
+        android:textColor="@color/hb_orange"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp" />
 
@@ -44,8 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#E66B31" />
+        android:textColor="@color/hb_on_accent"
+        android:backgroundTint="@color/hb_orange" />
 
     <!-- Results Heading -->
     <TextView
@@ -54,7 +54,7 @@
         android:text="Search Results"
         android:textSize="21sp"
         android:textStyle="bold"
-        android:textColor="#333333"
+        android:textColor="@color/hb_text_primary"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="12dp" />
 
@@ -80,7 +80,7 @@
             android:gravity="center"
             android:text="Enter a meal name to get started."
             android:textSize="16sp"
-            android:textColor="#777777"
+            android:textColor="@color/hb_text_muted"
             android:padding="16dp" />
 
         <!-- Loading Indicator -->

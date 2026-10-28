@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -20,7 +20,7 @@ import com.example.hungrybuddy.viewmodel.RecipeViewModel
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
-class RecipeDetailsActivity : ComponentActivity() {
+class RecipeDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecipeDetailsBinding
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FFF9F2">
+    android:background="@color/hb_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:text="Create Account"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:textColor="#E66B31"
+            android:textColor="@color/hb_orange"
             android:layout_marginBottom="8dp" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Join HungryBuddy and discover delicious recipes!"
             android:textSize="16sp"
-            android:textColor="#555555"
+            android:textColor="@color/hb_text_secondary"
             android:gravity="center"
             android:layout_marginBottom="32dp" />
 
@@ -65,7 +65,7 @@
             android:id="@+id/tvRegisterError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#D32F2F"
+            android:textColor="@color/hb_error"
             android:textSize="14sp"
             android:visibility="gone"
             android:layout_marginBottom="8dp" />
@@ -82,15 +82,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create Account"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#E66B31" />
+            android:textColor="@color/hb_on_accent"
+            android:backgroundTint="@color/hb_orange" />
 
         <TextView
             android:id="@+id/tvLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already have an account? Login"
-            android:textColor="#E66B31"
+            android:textColor="@color/hb_orange"
             android:textSize="15sp"
             android:padding="16dp"
             android:layout_marginTop="16dp" />
