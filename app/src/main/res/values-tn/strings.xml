@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HungryBuddy</string>
+    <string name="home_title">🍽️ HungryBuddy</string>
+    <string name="home_subtitle">Tseba diresepe tse di monate</string>
+    <string name="home_description">Batla dijo tse o di ratang mme o bone sengwe se sesha se o ka se apeang gompieno!</string>
+    <string name="search_recipes">Batla Diresepe</string>
+    <string name="settings">Ditlhophiso</string>
+    <string name="explore_recipes">Leba Diresepe</string>
+    <string name="home_search_tip">Bona dijo tse di monate ka go batla diresepe!</string>
+
+    <string name="login_welcome">Re a go amogela gape! Tsena go batla diresepe.</string>
+    <string name="email_address">Aterese ya imeile</string>
+    <string name="password">Phasewete</string>
+    <string name="login">Tsena</string>
+    <string name="login_register_prompt">Ga o na akhaonto? Ikwadise</string>
+
+    <string name="create_account">Tlhama Akhaonto</string>
+    <string name="register_welcome">Nna karolo ya HungryBuddy mme o bone diresepe tse di monate!</string>
+    <string name="confirm_password">Netefatsa phasewete</string>
+    <string name="register_login_prompt">O setse o na le akhaonto? Tsena</string>
+
+    <string name="back">Morago</string>
+    <string name="recipe_image_description">Setshwantsho sa resipi</string>
+    <string name="recipe_name">Leina la resipi</string>
+    <string name="category">Setlhopha</string>
+    <string name="cuisine">Mofuta wa dijo</string>
+    <string name="ingredients">Ditswakwa</string>
+    <string name="cooking_instructions">Ditaelo tsa go apaya</string>
+    <string name="cooking_instructions_placeholder">Ditaelo tsa go apaya di tla bonala fano.</string>
+    <string name="watch_cooking_video">Leba bidio ya go apaya</string>
+    <string name="unable_to_load_recipe">Ga go a kgonega go bula resipi eno.</string>
+
+    <string name="enter_recipe_name">Tsenya leina la resipi</string>
+    <string name="search">Batla</string>
+    <string name="search_results">Dipholo tsa patlo</string>
+    <string name="search_empty_prompt">Tsenya leina la dijo go simolola.</string>
+
+    <string name="settings_subtitle">Ditlhophiso tsa HungryBuddy</string>
+    <string name="account">Akhaonto</string>
+    <string name="no_email_available">Ga go na aterese ya imeile</string>
+    <string name="language">Puo</string>
+    <string name="english">Seesemane</string>
+    <string name="appearance">Ponalo</string>
+    <string name="dark_mode">Mokgwa o o lefifi</string>
+    <string name="more_settings">Ditlhophiso tse dingwe di tla okediwa fano.</string>
+    <string name="logout">Tswa</string>
+    <string name="home">Gae</string>
+
+    <string name="language_prompt">Tlhopha puo ya gago</string>
+    <string name="dark_mode_enabled">Mokgwa o o lefifi o buletswe. Kgetho ya gago e bolokilwe.</string>
+    <string name="light_mode_enabled">Mokgwa o o phatsimang o buletswe. Kgetho ya gago e bolokilwe.</string>
+    <string name="dark_mode_hint">Tlhopha mokgwa o o lefifi go fetola ponalo ya app.</string>
+
+    <string name="logout_confirmation_title">Tswa</string>
+    <string name="logout_confirmation_message">A o batla tota go tswa mo HungryBuddy?</string>
+    <string name="logout_success">O tswile ka katlego!</string>
+
+    <string-array name="language_options">
+        <item>English</item>
+        <item>isiZulu</item>
+        <item>Setswana</item>
+    </string-array>
+</resources>

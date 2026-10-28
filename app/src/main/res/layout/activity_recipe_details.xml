@@ -12,7 +12,7 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back"
         android:textColor="@color/hb_on_accent"
         android:backgroundTint="@color/hb_orange"
         android:layout_marginBottom="12dp" />
@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
                     android:scaleType="centerCrop"
-                    android:contentDescription="Recipe image"
+                    android:contentDescription="@string/recipe_image_description"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Recipe Name -->
@@ -49,7 +49,7 @@
                     android:id="@+id/tvRecipeDetailName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Recipe Name"
+                    android:text="@string/recipe_name"
                     android:textSize="26sp"
                     android:textStyle="bold"
                     android:textColor="@color/hb_orange"
@@ -60,7 +60,7 @@
                     android:id="@+id/tvRecipeDetailCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Category"
+                    android:text="@string/category"
                     android:textSize="16sp"
                     android:textColor="@color/hb_text_secondary"
                     android:layout_marginBottom="8dp" />
@@ -70,7 +70,7 @@
                     android:id="@+id/tvRecipeDetailArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cuisine"
+                    android:text="@string/cuisine"
                     android:textSize="16sp"
                     android:textColor="@color/hb_text_secondary"
                     android:layout_marginBottom="20dp" />
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ingredients"
+                    android:text="@string/ingredients"
                     android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@color/hb_text_primary"
@@ -97,7 +97,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cooking Instructions"
+                    android:text="@string/cooking_instructions"
                     android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@color/hb_text_primary"
@@ -108,7 +108,7 @@
                     android:id="@+id/tvRecipeInstructions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cooking instructions will appear here."
+                    android:text="@string/cooking_instructions_placeholder"
                     android:textSize="16sp"
                     android:textColor="@color/hb_text_secondary"
                     android:lineSpacingExtra="6dp"
@@ -119,7 +119,7 @@
                     android:id="@+id/btnWatchVideo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Watch Cooking Video"
+                    android:text="@string/watch_cooking_video"
                     android:textColor="@color/hb_on_accent"
                     android:backgroundTint="@color/hb_orange"
                     android:visibility="gone"
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Unable to load this recipe."
+            android:text="@string/unable_to_load_recipe"
             android:textSize="16sp"
             android:textColor="@color/hb_error"
             android:padding="16dp"

@@ -12,7 +12,7 @@
         android:id="@+id/btnSearchBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back"
         android:textColor="@color/hb_on_accent"
         android:backgroundTint="@color/hb_orange" />
 
@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Recipes"
+        android:text="@string/search_recipes"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/hb_orange"
@@ -32,7 +32,7 @@
         android:id="@+id/etSearchQuery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter a recipe name"
+        android:hint="@string/enter_recipe_name"
         android:inputType="text"
         android:singleLine="true"
         android:imeOptions="actionSearch"
@@ -43,7 +43,7 @@
         android:id="@+id/btnRunSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search"
+        android:text="@string/search"
         android:textColor="@color/hb_on_accent"
         android:backgroundTint="@color/hb_orange" />
 
@@ -51,7 +51,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Results"
+        android:text="@string/search_results"
         android:textSize="21sp"
         android:textStyle="bold"
         android:textColor="@color/hb_text_primary"
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Enter a meal name to get started."
+            android:text="@string/search_empty_prompt"
             android:textSize="16sp"
             android:textColor="@color/hb_text_muted"
             android:padding="16dp" />

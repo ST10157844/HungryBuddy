@@ -11,6 +11,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.hungrybuddy.utils.SettingsPreferences
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.core.os.LocaleListCompat
+import com.example.hungrybuddy.R
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -50,14 +55,78 @@ class SettingsActivity : AppCompatActivity() {
         val userEmail = auth.currentUser?.email
 
         binding.tvUserEmail.text =
-            userEmail ?: "No email available"
+            userEmail ?: getString(R.string.no_email_available)
     }
 
     private fun setupLanguage() {
 
-        // Display current supported language.
-        binding.tvLanguage.text = "English"
+    // These language tags match our Android resource folders:
+    // values = English, values-zu = isiZulu, values-tn = Setswana.
+    val languageTags = listOf("en", "zu", "tn")
+
+    // Build the dropdown from the language names in strings.xml.
+    val languageAdapter = ArrayAdapter.createFromResource(
+        this,
+        R.array.language_options,
+        android.R.layout.simple_spinner_item
+    ).apply {
+        setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        )
     }
+
+    binding.spinnerLanguage.adapter = languageAdapter
+
+    // Restore the currently selected app language.
+    val currentLanguageTag =
+        AppCompatDelegate.getApplicationLocales()
+            .get(0)?.language
+            ?: SettingsPreferences.getLanguageTag(this)
+
+    val selectedIndex = languageTags
+        .indexOf(currentLanguageTag)
+        .let { if (it >= 0) it else 0 }
+
+    // Set the initial selection before attaching the listener.
+    binding.spinnerLanguage.setSelection(selectedIndex, false)
+
+    binding.spinnerLanguage.onItemSelectedListener =
+        object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedTag =
+                    languageTags.getOrElse(position) { "en" }
+
+                val activeTag =
+                    AppCompatDelegate.getApplicationLocales()
+                        .get(0)?.language
+                        ?: "en"
+
+                if (selectedTag != activeTag) {
+
+                    // Save the choice in HungryBuddy settings.
+                    SettingsPreferences.setLanguageTag(
+                        this@SettingsActivity,
+                        selectedTag
+                    )
+
+                    // Apply the new locale to the app.
+                    AppCompatDelegate.setApplicationLocales(
+                        LocaleListCompat.forLanguageTags(selectedTag)
+                    )
+                }
+            }
+
+            override fun onNothingSelected(
+                parent: AdapterView<*>?
+            ) = Unit
+        }
+}
 
     private fun setupDarkMode() {
 
@@ -70,11 +139,11 @@ class SettingsActivity : AppCompatActivity() {
     binding.switchDarkMode.isEnabled = true
 
     binding.tvMoreSettings.text =
-        if (darkModeEnabled) {
-            "Dark mode is enabled. Your preference is saved."
-        } else {
-            "Choose dark mode to change the app appearance."
-        }
+    if (darkModeEnabled) {
+        getString(R.string.dark_mode_enabled)
+    } else {
+        getString(R.string.dark_mode_hint)
+    }
 
     // Save the preference and apply the theme when the switch changes.
     binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
@@ -84,12 +153,12 @@ class SettingsActivity : AppCompatActivity() {
             isChecked
         )
 
-        binding.tvMoreSettings.text =
-            if (isChecked) {
-                "Dark mode is enabled. Your preference is saved."
-            } else {
-                "Light mode is enabled. Your preference is saved."
-            }
+       binding.tvMoreSettings.text =
+    if (isChecked) {
+        getString(R.string.dark_mode_enabled)
+    } else {
+        getString(R.string.light_mode_enabled)
+    }
 
         val nightMode =
             if (isChecked) {
@@ -118,18 +187,16 @@ class SettingsActivity : AppCompatActivity() {
     private fun showLogoutConfirmation() {
 
         AlertDialog.Builder(this)
-            .setTitle("Logout")
-            .setMessage(
-                "Are you sure you want to log out of HungryBuddy?"
-            )
-            .setPositiveButton("Logout") { _, _ ->
+            .setTitle(getString(R.string.logout_confirmation_title))
+            .setMessage(getString(R.string.logout_confirmation_message))
+            .setPositiveButton(getString(R.string.logout)) { _, _ ->
 
                 // Sign out from Firebase Authentication.
                 auth.signOut()
 
                 Toast.makeText(
                     this,
-                    "Logged out successfully!",
+                   getString(R.string.logout_success),
                     Toast.LENGTH_SHORT
                 ).show()
 

@@ -12,7 +12,7 @@
         android:id="@+id/tvHomeTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🍽️ HungryBuddy"
+        android:text="@string/home_title"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/hb_orange"
@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Discover delicious recipes"
+        android:text="@string/home_subtitle"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/hb_text_primary"
@@ -34,7 +34,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search for your favourite meals and discover something new to cook today!"
+        android:text="@string/home_description"
         android:textSize="15sp"
         android:textColor="@color/hb_text_secondary"
         android:gravity="center"
@@ -46,7 +46,7 @@
         android:id="@+id/btnSearchRecipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Recipes"
+        android:text="@string/search_recipes"
         android:textColor="@color/hb_on_accent"
         android:backgroundTint="@color/hb_orange" />
 
@@ -55,14 +55,14 @@
         android:id="@+id/btnSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="@string/settings"
         android:layout_marginTop="8dp" />
 
     <!-- Recipe Section Heading -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Explore Recipes"
+        android:text="@string/explore_recipes"
         android:textSize="21sp"
         android:textStyle="bold"
         android:textColor="@color/hb_text_primary"
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Find delicious meals using recipe search!"
+            android:text="@string/home_search_tip"
             android:textSize="15sp"
             android:textColor="@color/hb_text_muted"
             android:gravity="center"
