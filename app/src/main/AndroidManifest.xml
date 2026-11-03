@@ -5,6 +5,7 @@
     <!-- Internet access for Firebase and TheMealDB -->
     <uses-permission
         android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
 	android:name=".HungryBuddyApp"

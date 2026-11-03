@@ -18,13 +18,38 @@ import kotlinx.coroutines.launch
 import android.content.Intent
 import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 
+
+
     private val viewModel: RecipeViewModel by viewModels()
 
     private lateinit var recipeAdapter: RecipeAdapter
+
+    private val notificationPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted ->
+
+            val message = if (isGranted) {
+                "Notifications enabled."
+            } else {
+                "Notifications are disabled. You can enable them in your phone settings."
+            }
+
+            Toast.makeText(
+                this,
+                message,
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +64,7 @@ class HomeActivity : AppCompatActivity() {
 
         // Initialize XML bottom navigation.
         BottomNavigationHelper.setup(this)
+        requestNotificationPermission()
 
         // Load initial recipes when Home opens.
         // "chicken" is a starter search query.
@@ -54,6 +80,23 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    private fun requestNotificationPermission() {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            return
+        }
+
+        if (
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(
+                Manifest.permission.POST_NOTIFICATIONS
+            )
+        }
+    }
     private fun setupRecyclerView() {
 
 
