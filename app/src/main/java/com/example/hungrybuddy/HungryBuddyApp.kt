@@ -3,6 +3,8 @@ package com.example.hungrybuddy
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.hungrybuddy.utils.SettingsPreferences
+import com.example.hungrybuddy.data.sync.FavoriteSyncScheduler
+import com.google.firebase.auth.FirebaseAuth
 
 /**
  * Applies the saved appearance before the app's Activities are displayed.
@@ -21,5 +23,9 @@ class HungryBuddyApp : Application() {
         }
 
         AppCompatDelegate.setDefaultNightMode(savedMode)
+        // Resume favourite synchronisation for an existing signed-in user.
+        FirebaseAuth.getInstance().currentUser?.uid?.let { userId ->
+            FavoriteSyncScheduler.scheduleSync(this, userId)
+        }
     }
 }

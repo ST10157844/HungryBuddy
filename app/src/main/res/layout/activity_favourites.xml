@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/hb_background">
+
+    <!-- Favourites heading -->
+    <TextView
+        android:id="@+id/tvFavouritesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/favourites_title"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/hb_orange"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Short description -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/favourites_subtitle"
+        android:textSize="14sp"
+        android:textColor="@color/hb_text_secondary"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp" />
+
+    <!-- Recipe list and empty state -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavoriteRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clipToPadding="false" />
+
+        <TextView
+            android:id="@+id/tvFavoritesEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@string/favourites_empty"
+            android:textSize="16sp"
+            android:textColor="@color/hb_text_secondary"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- Existing bottom navigation -->
+    <include
+        layout="@layout/view_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

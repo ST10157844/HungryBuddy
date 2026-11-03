@@ -44,6 +44,22 @@
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground" />
+<!-- Favourites Navigation -->
+<TextView
+    android:id="@+id/navFavourites"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:minHeight="56dp"
+    android:gravity="center"
+    android:drawableTop="@android:drawable/btn_star_big_on"
+    android:drawablePadding="5dp"
+    android:text="@string/nav_favourites"
+    android:textSize="13sp"
+    android:textColor="@color/hb_text_muted"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground" />
 
     <!-- Settings Navigation -->
     <TextView

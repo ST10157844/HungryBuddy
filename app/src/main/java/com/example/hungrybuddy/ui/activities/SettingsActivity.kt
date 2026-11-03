@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hungrybuddy.databinding.ActivitySettingsBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.example.hungrybuddy.data.sync.FavoriteSyncScheduler
 import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.hungrybuddy.utils.SettingsPreferences
@@ -193,6 +194,8 @@ class SettingsActivity : AppCompatActivity() {
 
                 // Sign out from Firebase Authentication.
                 auth.signOut()
+                // Stop scheduled favourite synchronisation on logout.
+                FavoriteSyncScheduler.cancelSync(this)
 
                 Toast.makeText(
                     this,

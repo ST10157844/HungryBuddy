@@ -64,6 +64,10 @@
             android:name=".ui.activities.SearchActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+<activity
+    android:name=".ui.activities.FavouritesActivity"
+    android:exported="false"
+    android:windowSoftInputMode="adjustResize" />
 
 <!-- Allow AppCompat to preserve app language choices on Android 12 and below. -->
 <service

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.hungrybuddy.databinding.ActivityLoginBinding
 import com.example.hungrybuddy.utils.ValidationUtils
 import com.google.firebase.auth.FirebaseAuth
+import com.example.hungrybuddy.data.sync.FavoriteSyncScheduler
 import android.content.Intent
 
 
@@ -95,6 +96,10 @@ class LoginActivity : AppCompatActivity() {
 
 
                 if (task.isSuccessful) {
+                    // Start synchronising this user's favourites.
+                    auth.currentUser?.uid?.let { userId ->
+                        FavoriteSyncScheduler.scheduleSync(this, userId)
+                    }
 
                     Toast.makeText(
                         this,

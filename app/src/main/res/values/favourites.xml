@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="favourites_save_button">Save to Favourites</string>
+    <string name="favourites_remove_button">Remove from Favourites</string>
+    <string name="favourites_saved_message">Added to your favourites.</string>
+    <string name="favourites_removed_message">Removed from your favourites.</string>
+    <string name="favourites_sign_in_message">Please sign in to save favourites.</string>
+    <string name="favourites_error_message">Unable to update favourites.</string>
+
+    <string name="nav_favourites">Favourites</string>
+    <string name="favourites_title">My Favourites</string>
+    <string name="favourites_subtitle">Your saved recipes are available offline.</string>
+    <string name="favourites_empty">No favourite recipes have been saved yet. Open a recipe and select Save to Favourites.</string>
+
+</resources>

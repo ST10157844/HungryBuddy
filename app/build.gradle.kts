@@ -1,6 +1,7 @@
 
 plugins {
     alias(libs.plugins.android.application)
+ alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
 }
 
@@ -40,6 +41,11 @@ android {
 
 dependencies {
 
+	// Room - local offline favourites database
+implementation(libs.androidx.room.runtime)
+implementation(libs.androidx.room.ktx)
+ksp(libs.androidx.room.compiler)
+
     // Traditional Android Views
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
@@ -66,9 +72,16 @@ dependencies {
     // Glide - Recipe images in XML ImageViews
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
-    // Firebase Authentication
-    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
-    implementation("com.google.firebase:firebase-auth")
+   // Firebase Authentication and Cloud Firestore
+implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+implementation("com.google.firebase:firebase-auth")
+implementation("com.google.firebase:firebase-firestore")
+
+// Await Firebase Tasks using Kotlin Coroutines
+implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
+
+    // WorkManager - reliable background synchronisation
+    implementation("androidx.work:work-runtime-ktx:2.12.0")
 
     // Unit testing
     testImplementation(libs.junit)

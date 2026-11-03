@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favourites_save_button">Gcina kokuthandwayo</string>
+    <string name="favourites_remove_button">Susa kokuthandwayo</string>
+    <string name="favourites_saved_message">Kungezwe kokuthandwayo kwakho.</string>
+    <string name="favourites_removed_message">Kususiwe kokuthandwayo kwakho.</string>
+    <string name="favourites_sign_in_message">Ngena ngemvume ukuze ulondoloze okuthandwayo.</string>
+    <string name="favourites_error_message">Ayikwazanga ukubuyekeza okuthandwayo.</string>
+<string name="nav_favourites">Izintandokazi</string>
+<string name="favourites_title">Izintandokazi zami</string>
+<string name="favourites_subtitle">Amaresiphi akho agciniwe ayatholakala ungaxhunyiwe ku-inthanethi.</string>
+<string name="favourites_empty">Awukakagcini iresiphi. Vula iresiphi bese ukhetha okuthi Gcina kokuthandwayo.</string>
+</resources>

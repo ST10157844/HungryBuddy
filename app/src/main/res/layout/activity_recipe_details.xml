@@ -74,6 +74,15 @@
                     android:textSize="16sp"
                     android:textColor="@color/hb_text_secondary"
                     android:layout_marginBottom="20dp" />
+<!-- Save or remove this recipe from favourites -->
+<Button
+    android:id="@+id/btnToggleFavorite"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/favourites_save_button"
+    android:textColor="@color/hb_on_accent"
+    android:backgroundTint="@color/hb_orange"
+    android:layout_marginBottom="20dp" />
 
                 <!-- Ingredients Heading -->
                 <TextView
