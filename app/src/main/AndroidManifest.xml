@@ -5,8 +5,10 @@
     <!-- Internet access for Firebase and TheMealDB -->
     <uses-permission
         android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
+	android:name=".HungryBuddyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -63,8 +65,31 @@
             android:name=".ui.activities.SearchActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+<activity
+    android:name=".ui.activities.FavouritesActivity"
+    android:exported="false"
+    android:windowSoftInputMode="adjustResize" />
+
+<!-- Allow AppCompat to preserve app language choices on Android 12 and below. -->
+<service
+    android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+    android:enabled="false"
+    android:exported="false">
+
+    <meta-data
+        android:name="autoStoreLocales"
+        android:value="true" />
+
+</service>
 
 
+        <service
+            android:name=".data.notifications.HungryBuddyMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

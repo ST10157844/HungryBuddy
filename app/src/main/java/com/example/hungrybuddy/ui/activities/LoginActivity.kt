@@ -3,14 +3,15 @@ package com.example.hungrybuddy.ui.activities
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hungrybuddy.databinding.ActivityLoginBinding
 import com.example.hungrybuddy.utils.ValidationUtils
 import com.google.firebase.auth.FirebaseAuth
+import com.example.hungrybuddy.data.sync.FavoriteSyncScheduler
 import android.content.Intent
 
 
-class LoginActivity : ComponentActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -95,6 +96,10 @@ class LoginActivity : ComponentActivity() {
 
 
                 if (task.isSuccessful) {
+                    // Start synchronising this user's favourites.
+                    auth.currentUser?.uid?.let { userId ->
+                        FavoriteSyncScheduler.scheduleSync(this, userId)
+                    }
 
                     Toast.makeText(
                         this,

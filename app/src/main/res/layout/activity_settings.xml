@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF9F2">
+    android:background="@color/hb_background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,83 +22,82 @@
                 android:id="@+id/btnSettingsBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#E66B31"
+                android:text="@string/back"
+                android:textColor="@color/hb_on_accent"
+                android:backgroundTint="@color/hb_orange"
                 android:layout_marginBottom="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Settings"
+                android:text="@string/settings"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="#E66B31"
+                android:textColor="@color/hb_orange"
                 android:layout_marginBottom="8dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HungryBuddy Settings"
+                android:text="@string/settings_subtitle"
                 android:textSize="17sp"
-                android:textColor="#666666"
+                android:textColor="@color/hb_text_secondary"
                 android:layout_marginBottom="32dp" />
 
             <!-- Account -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Account"
+                android:text="@string/account"
                 android:textSize="21sp"
                 android:textStyle="bold"
-                android:textColor="#333333"
+                android:textColor="@color/hb_text_primary"
                 android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/tvUserEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No email available"
+                android:text="@string/no_email_available"
                 android:textSize="16sp"
-                android:textColor="#555555"
+                android:textColor="@color/hb_text_secondary"
                 android:layout_marginBottom="28dp" />
 
             <!-- Language -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Language"
+                android:text="@string/language"
                 android:textSize="21sp"
                 android:textStyle="bold"
-                android:textColor="#333333"
+                android:textColor="@color/hb_text_primary"
                 android:layout_marginBottom="12dp" />
 
-            <TextView
-                android:id="@+id/tvLanguage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="English"
-                android:textSize="16sp"
-                android:textColor="#555555"
-                android:layout_marginBottom="28dp" />
+            <Spinner
+    android:id="@+id/spinnerLanguage"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:entries="@array/language_options"
+    android:contentDescription="@string/language_prompt"
+    android:layout_marginBottom="28dp" />
 
             <!-- Appearance -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Appearance"
+                android:text="@string/appearance"
                 android:textSize="21sp"
                 android:textStyle="bold"
-                android:textColor="#333333"
+                android:textColor="@color/hb_text_primary"
                 android:layout_marginBottom="16dp" />
 
             <Switch
                 android:id="@+id/switchDarkMode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dark Mode"
+                android:text="@string/dark_mode"
                 android:textSize="16sp"
-                android:textColor="#444444"
+                android:textColor="@color/hb_text_secondary"
                 android:checked="false"
                 android:showText="false"
                 android:layout_marginBottom="28dp" />
@@ -107,9 +106,9 @@
                 android:id="@+id/tvMoreSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="More settings will be added here."
+                android:text="@string/more_settings"
                 android:textSize="14sp"
-                android:textColor="#777777"
+                android:textColor="@color/hb_text_muted"
                 android:layout_marginBottom="32dp" />
 
             <!-- Logout -->
@@ -117,9 +116,9 @@
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Logout"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#D84315"
+                android:text="@string/logout"
+                android:textColor="@color/hb_on_accent"
+                android:backgroundTint="@color/hb_danger_button"
                 android:layout_marginTop="8dp" />
 
         </LinearLayout>

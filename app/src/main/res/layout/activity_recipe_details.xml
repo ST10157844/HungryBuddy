@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF9F2"
+    android:background="@color/hb_background"
     android:padding="16dp">
 
     <!-- Back Button -->
@@ -12,9 +12,9 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#E66B31"
+        android:text="@string/back"
+        android:textColor="@color/hb_on_accent"
+        android:backgroundTint="@color/hb_orange"
         android:layout_marginBottom="12dp" />
 
     <FrameLayout
@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
                     android:scaleType="centerCrop"
-                    android:contentDescription="Recipe image"
+                    android:contentDescription="@string/recipe_image_description"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Recipe Name -->
@@ -49,10 +49,10 @@
                     android:id="@+id/tvRecipeDetailName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Recipe Name"
+                    android:text="@string/recipe_name"
                     android:textSize="26sp"
                     android:textStyle="bold"
-                    android:textColor="#E66B31"
+                    android:textColor="@color/hb_orange"
                     android:layout_marginBottom="12dp" />
 
                 <!-- Category -->
@@ -60,9 +60,9 @@
                     android:id="@+id/tvRecipeDetailCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Category"
+                    android:text="@string/category"
                     android:textSize="16sp"
-                    android:textColor="#444444"
+                    android:textColor="@color/hb_text_secondary"
                     android:layout_marginBottom="8dp" />
 
                 <!-- Cuisine -->
@@ -70,19 +70,28 @@
                     android:id="@+id/tvRecipeDetailArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cuisine"
+                    android:text="@string/cuisine"
                     android:textSize="16sp"
-                    android:textColor="#444444"
+                    android:textColor="@color/hb_text_secondary"
                     android:layout_marginBottom="20dp" />
+<!-- Save or remove this recipe from favourites -->
+<Button
+    android:id="@+id/btnToggleFavorite"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/favourites_save_button"
+    android:textColor="@color/hb_on_accent"
+    android:backgroundTint="@color/hb_orange"
+    android:layout_marginBottom="20dp" />
 
                 <!-- Ingredients Heading -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ingredients"
+                    android:text="@string/ingredients"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#333333"
+                    android:textColor="@color/hb_text_primary"
                     android:layout_marginBottom="12dp" />
 
                 <!-- Dynamic Ingredients List -->
@@ -97,10 +106,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cooking Instructions"
+                    android:text="@string/cooking_instructions"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#333333"
+                    android:textColor="@color/hb_text_primary"
                     android:layout_marginBottom="12dp" />
 
                 <!-- Cooking Instructions -->
@@ -108,9 +117,9 @@
                     android:id="@+id/tvRecipeInstructions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cooking instructions will appear here."
+                    android:text="@string/cooking_instructions_placeholder"
                     android:textSize="16sp"
-                    android:textColor="#555555"
+                    android:textColor="@color/hb_text_secondary"
                     android:lineSpacingExtra="6dp"
                     android:layout_marginBottom="20dp" />
 
@@ -119,9 +128,9 @@
                     android:id="@+id/btnWatchVideo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Watch Cooking Video"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#E66B31"
+                    android:text="@string/watch_cooking_video"
+                    android:textColor="@color/hb_on_accent"
+                    android:backgroundTint="@color/hb_orange"
                     android:visibility="gone"
                     android:layout_marginBottom="16dp" />
 
@@ -144,9 +153,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Unable to load this recipe."
+            android:text="@string/unable_to_load_recipe"
             android:textSize="16sp"
-            android:textColor="#D32F2F"
+            android:textColor="@color/hb_error"
             android:padding="16dp"
             android:visibility="gone" />
 

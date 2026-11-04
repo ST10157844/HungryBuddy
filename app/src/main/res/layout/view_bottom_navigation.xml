@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center"
-    android:background="#FFFFFF"
+    android:background="@color/hb_navigation_background"
     android:elevation="8dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
@@ -21,9 +21,9 @@
         android:gravity="center"
         android:drawableTop="@android:drawable/ic_menu_view"
         android:drawablePadding="5dp"
-        android:text="Home"
+        android:text="@string/home"
         android:textSize="13sp"
-        android:textColor="#E66B31"
+        android:textColor="@color/hb_orange"
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground" />
@@ -38,12 +38,28 @@
         android:gravity="center"
         android:drawableTop="@android:drawable/ic_menu_search"
         android:drawablePadding="5dp"
-        android:text="Search"
+        android:text="@string/search"
         android:textSize="13sp"
-        android:textColor="#777777"
+        android:textColor="@color/hb_text_muted"
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground" />
+<!-- Favourites Navigation -->
+<TextView
+    android:id="@+id/navFavourites"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:minHeight="56dp"
+    android:gravity="center"
+    android:drawableTop="@android:drawable/btn_star_big_on"
+    android:drawablePadding="5dp"
+    android:text="@string/nav_favourites"
+    android:textSize="13sp"
+    android:textColor="@color/hb_text_muted"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground" />
 
     <!-- Settings Navigation -->
     <TextView
@@ -55,9 +71,9 @@
         android:gravity="center"
         android:drawableTop="@android:drawable/ic_menu_manage"
         android:drawablePadding="5dp"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textSize="13sp"
-        android:textColor="#777777"
+        android:textColor="@color/hb_text_muted"
         android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground" />

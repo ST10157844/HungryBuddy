@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HungryBuddy</string>
+    <string name="home_title">🍽️ HungryBuddy</string>
+    <string name="home_subtitle">Thola izindlela zokupheka ezimnandi</string>
+    <string name="home_description">Sesha ukudla okuthandayo bese uthola okusha ongakupheka namuhla!</string>
+    <string name="search_recipes">Sesha Izindlela Zokupheka</string>
+    <string name="settings">Izilungiselelo</string>
+    <string name="explore_recipes">Hlola Izindlela Zokupheka</string>
+    <string name="home_search_tip">Thola ukudla okumnandi ngokusesha izindlela zokupheka!</string>
+
+    <string name="login_welcome">Siyakwamukela futhi! Ngena ukuze uthole izindlela zokupheka.</string>
+    <string name="email_address">Ikheli le-imeyili</string>
+    <string name="password">Iphasiwedi</string>
+    <string name="login">Ngena</string>
+    <string name="login_register_prompt">Awunayo i-akhawunti? Bhalisa</string>
+
+    <string name="create_account">Dala i-akhawunti</string>
+    <string name="register_welcome">Joyina i-HungryBuddy uthole izindlela zokupheka ezimnandi!</string>
+    <string name="confirm_password">Qinisekisa iphasiwedi</string>
+    <string name="register_login_prompt">Usunayo i-akhawunti? Ngena</string>
+
+    <string name="back">Emuva</string>
+    <string name="recipe_image_description">Isithombe seresiphi</string>
+    <string name="recipe_name">Igama leresiphi</string>
+    <string name="category">Isigaba</string>
+    <string name="cuisine">Uhlobo lokudla</string>
+    <string name="ingredients">Izithako</string>
+    <string name="cooking_instructions">Imiyalelo yokupheka</string>
+    <string name="cooking_instructions_placeholder">Imiyalelo yokupheka izovela lapha.</string>
+    <string name="watch_cooking_video">Buka ividiyo yokupheka</string>
+    <string name="unable_to_load_recipe">Ayikwazanga ukulayisha le resiphi.</string>
+
+    <string name="enter_recipe_name">Faka igama leresiphi</string>
+    <string name="search">Sesha</string>
+    <string name="search_results">Imiphumela yokusesha</string>
+    <string name="search_empty_prompt">Faka igama lokudla ukuze uqale.</string>
+
+    <string name="settings_subtitle">Izilungiselelo ze-HungryBuddy</string>
+    <string name="account">I-akhawunti</string>
+    <string name="no_email_available">Alikho ikheli le-imeyili elitholakalayo</string>
+    <string name="language">Ulimi</string>
+    <string name="english">isiNgisi</string>
+    <string name="appearance">Ukubukeka</string>
+    <string name="dark_mode">Imodi emnyama</string>
+    <string name="more_settings">Ezinye izilungiselelo zizongezwa lapha.</string>
+    <string name="logout">Phuma</string>
+    <string name="home">Ekhaya</string>
+
+    <string name="language_prompt">Khetha ulimi lwakho</string>
+    <string name="dark_mode_enabled">Imodi emnyama ivuliwe. Okukhethile kulondoloziwe.</string>
+    <string name="light_mode_enabled">Imodi ekhanyayo ivuliwe. Okukhethile kulondoloziwe.</string>
+    <string name="dark_mode_hint">Khetha imodi emnyama ukuze ushintshe ukubukeka kohlelo lokusebenza.</string>
+
+    <string name="logout_confirmation_title">Phuma</string>
+    <string name="logout_confirmation_message">Uqinisekile ukuthi ufuna ukuphuma ku-HungryBuddy?</string>
+    <string name="logout_success">Uphume ngempumelelo!</string>
+
+    <string-array name="language_options">
+        <item>English</item>
+        <item>isiZulu</item>
+        <item>Setswana</item>
+    </string-array>
+</resources>

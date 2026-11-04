@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -19,15 +19,28 @@ import com.example.hungrybuddy.model.Recipe
 import com.example.hungrybuddy.viewmodel.RecipeViewModel
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import android.util.Log
+import com.example.hungrybuddy.data.local.FavoriteRecipeRepository
+import com.example.hungrybuddy.data.local.HungryBuddyDatabase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
+import com.example.hungrybuddy.R
+import com.example.hungrybuddy.data.sync.FavoriteSyncScheduler
 
-class RecipeDetailsActivity : ComponentActivity() {
+class RecipeDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecipeDetailsBinding
 
     private val viewModel: RecipeViewModel by viewModels()
+private lateinit var favoriteRepository: FavoriteRecipeRepository
+
+private var currentUserId: String? = null
+
+private var isCurrentRecipeFavorite = false
 
     companion object {
-        const val EXTRA_RECIPE_ID = "extra_recipe_id"
+         const val EXTRA_RECIPE_ID = "extra_recipe_id"
+    const val EXTRA_RECIPE_JSON = "extra_recipe_json"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,12 +48,41 @@ class RecipeDetailsActivity : ComponentActivity() {
 
         binding = ActivityRecipeDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+// Initialise local favourites storage.
+favoriteRepository = FavoriteRecipeRepository(
+    HungryBuddyDatabase.getDatabase(applicationContext)
+        .favoriteRecipeDao()
+)
+
+// Identify the currently signed-in Firebase user.
+currentUserId = FirebaseAuth.getInstance().currentUser?.uid
 
         // Return to the previous screen.
 
         binding.btnBack.setOnClickListener {
             finish()
         }
+// Restore a saved recipe directly from local data.
+// This allows favourites to open without an API request.
+val offlineRecipeJson = intent.getStringExtra(EXTRA_RECIPE_JSON)
+
+if (!offlineRecipeJson.isNullOrBlank()) {
+
+    val offlineRecipe = try {
+        Gson().fromJson(
+            offlineRecipeJson,
+            Recipe::class.java
+        )
+    } catch (exception: Exception) {
+        Log.e("RecipeDetails", "Could not restore offline recipe", exception)
+        null
+    }
+
+    if (offlineRecipe != null && !offlineRecipe.idMeal.isNullOrBlank()) {
+        displayRecipe(offlineRecipe)
+        return
+    }
+}
 
 
         // Get the selected recipe ID from HomeActivity.
@@ -139,8 +181,141 @@ class RecipeDetailsActivity : ComponentActivity() {
 
         // Display optional YouTube button.
         setupVideoButton(recipe.strYoutube)
+setupFavoriteButton(recipe)
     }
 
+private fun setupFavoriteButton(recipe: Recipe) {
+
+    val button = binding.btnToggleFavorite
+
+    val userId = currentUserId
+
+    val mealId = recipe.idMeal?.trim()
+
+    // Require an authenticated user and valid recipe ID.
+    if (userId.isNullOrBlank() || mealId.isNullOrBlank()) {
+        button.isEnabled = false
+        button.setText(R.string.favourites_sign_in_message)
+        return
+    }
+
+    // Prevent interaction until the saved status is checked.
+    button.isEnabled = false
+
+    lifecycleScope.launch {
+
+        try {
+
+            isCurrentRecipeFavorite =
+                favoriteRepository.getFavoriteRecipe(
+                    userId,
+                    mealId
+                ) != null
+
+            button.setText(
+                if (isCurrentRecipeFavorite) {
+                    R.string.favourites_remove_button
+                } else {
+                    R.string.favourites_save_button
+                }
+            )
+
+        } catch (exception: Exception) {
+
+            Log.e(
+                "RecipeDetails",
+                "Could not check favourite status",
+                exception
+            )
+
+            isCurrentRecipeFavorite = false
+            button.setText(R.string.favourites_save_button)
+
+        } finally {
+            button.isEnabled = true
+        }
+    }
+
+    // Save or remove the recipe locally.
+    button.setOnClickListener {
+
+        button.isEnabled = false
+
+        lifecycleScope.launch {
+
+            try {
+
+                if (isCurrentRecipeFavorite) {
+
+                    favoriteRepository.removeFavorite(
+                        userId,
+                        mealId
+                    )
+
+                    // Queue synchronisation after removing a favourite.
+                    FavoriteSyncScheduler.scheduleSync(
+                        this@RecipeDetailsActivity,
+                        userId
+                    )
+
+                    isCurrentRecipeFavorite = false
+
+                    Toast.makeText(
+                        this@RecipeDetailsActivity,
+                        R.string.favourites_removed_message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                } else {
+
+                    favoriteRepository.addFavorite(
+                        userId,
+                        recipe
+                    )
+
+                    // Queue synchronisation after saving a favourite.
+                    FavoriteSyncScheduler.scheduleSync(
+                        this@RecipeDetailsActivity,
+                        userId
+                    )
+
+                    isCurrentRecipeFavorite = true
+
+                    Toast.makeText(
+                        this@RecipeDetailsActivity,
+                        R.string.favourites_saved_message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                button.setText(
+                    if (isCurrentRecipeFavorite) {
+                        R.string.favourites_remove_button
+                    } else {
+                        R.string.favourites_save_button
+                    }
+                )
+
+            } catch (exception: Exception) {
+
+                Log.e(
+                    "RecipeDetails",
+                    "Could not update favourite",
+                    exception
+                )
+
+                Toast.makeText(
+                    this@RecipeDetailsActivity,
+                    R.string.favourites_error_message,
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } finally {
+                button.isEnabled = true
+            }
+        }
+    }
+}
     private fun displayIngredients(recipe: Recipe) {
 
         // Match each ingredient with its measurement.

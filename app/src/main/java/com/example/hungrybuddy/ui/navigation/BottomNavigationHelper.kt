@@ -9,6 +9,7 @@ import com.example.hungrybuddy.R
 import com.example.hungrybuddy.ui.activities.HomeActivity
 import com.example.hungrybuddy.ui.activities.SearchActivity
 import com.example.hungrybuddy.ui.activities.SettingsActivity
+import com.example.hungrybuddy.ui.activities.FavouritesActivity
 
 object BottomNavigationHelper {
 
@@ -25,6 +26,9 @@ object BottomNavigationHelper {
         val navSettings = activity.findViewById<TextView>(
             R.id.navSettings
         )
+val navFavourites = activity.findViewById<TextView>(
+    R.id.navFavourites
+)
 
         // Highlight the currently selected screen.
         val selectedColor = Color.parseColor("#E66B31")
@@ -44,6 +48,10 @@ object BottomNavigationHelper {
             if (activity is SettingsActivity)
                 selectedColor else normalColor
         )
+navFavourites.setTextColor(
+    if (activity is FavouritesActivity)
+        selectedColor else normalColor
+)
 
         // Navigate to Home.
         navHome.setOnClickListener {
@@ -59,6 +67,10 @@ object BottomNavigationHelper {
         navSettings.setOnClickListener {
             navigateTo(activity, SettingsActivity::class.java)
         }
+// Navigate to Favourites.
+navFavourites.setOnClickListener {
+    navigateTo(activity, FavouritesActivity::class.java)
+}
     }
 
 

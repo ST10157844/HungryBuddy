@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hungrybuddy.databinding.ActivityRegisterBinding
 import com.example.hungrybuddy.utils.ValidationUtils
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterActivity : ComponentActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth

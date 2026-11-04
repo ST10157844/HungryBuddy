@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- HungryBuddy dark-theme palette -->
+    <color name="hb_background">#121212</color>
+    <color name="hb_orange">#E66B31</color>
+    <color name="hb_orange_dark">#C94C1C</color>
+    <color name="hb_text_primary">#F5F5F5</color>
+    <color name="hb_text_secondary">#D0D0D0</color>
+    <color name="hb_text_muted">#B0B0B0</color>
+    <color name="hb_card_background">#1E1E1E</color>
+    <color name="hb_navigation_background">#202020</color>
+    <color name="hb_on_accent">#FFFFFF</color>
+    <color name="hb_danger_button">#D84315</color>
+    <color name="hb_error">#FF6B6B</color>
+</resources>

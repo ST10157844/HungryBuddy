@@ -5,12 +5,21 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hungrybuddy.databinding.ActivitySettingsBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.example.hungrybuddy.data.sync.FavoriteSyncScheduler
+import com.example.hungrybuddy.data.notifications.InactivityReminderScheduler
 import com.example.hungrybuddy.ui.navigation.BottomNavigationHelper
+import androidx.appcompat.app.AppCompatDelegate
+import com.example.hungrybuddy.utils.SettingsPreferences
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.core.os.LocaleListCompat
+import com.example.hungrybuddy.R
 
-class SettingsActivity : ComponentActivity() {
+class SettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
     private lateinit var auth: FirebaseAuth
@@ -48,26 +57,121 @@ class SettingsActivity : ComponentActivity() {
         val userEmail = auth.currentUser?.email
 
         binding.tvUserEmail.text =
-            userEmail ?: "No email available"
+            userEmail ?: getString(R.string.no_email_available)
     }
 
     private fun setupLanguage() {
 
-        // Display current supported language.
-        binding.tvLanguage.text = "English"
+    // These language tags match our Android resource folders:
+    // values = English, values-zu = isiZulu, values-tn = Setswana.
+    val languageTags = listOf("en", "zu", "tn")
+
+    // Build the dropdown from the language names in strings.xml.
+    val languageAdapter = ArrayAdapter.createFromResource(
+        this,
+        R.array.language_options,
+        android.R.layout.simple_spinner_item
+    ).apply {
+        setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        )
     }
+
+    binding.spinnerLanguage.adapter = languageAdapter
+
+    // Restore the currently selected app language.
+    val currentLanguageTag =
+        AppCompatDelegate.getApplicationLocales()
+            .get(0)?.language
+            ?: SettingsPreferences.getLanguageTag(this)
+
+    val selectedIndex = languageTags
+        .indexOf(currentLanguageTag)
+        .let { if (it >= 0) it else 0 }
+
+    // Set the initial selection before attaching the listener.
+    binding.spinnerLanguage.setSelection(selectedIndex, false)
+
+    binding.spinnerLanguage.onItemSelectedListener =
+        object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedTag =
+                    languageTags.getOrElse(position) { "en" }
+
+                val activeTag =
+                    AppCompatDelegate.getApplicationLocales()
+                        .get(0)?.language
+                        ?: "en"
+
+                if (selectedTag != activeTag) {
+
+                    // Save the choice in HungryBuddy settings.
+                    SettingsPreferences.setLanguageTag(
+                        this@SettingsActivity,
+                        selectedTag
+                    )
+
+                    // Apply the new locale to the app.
+                    AppCompatDelegate.setApplicationLocales(
+                        LocaleListCompat.forLanguageTags(selectedTag)
+                    )
+                }
+            }
+
+            override fun onNothingSelected(
+                parent: AdapterView<*>?
+            ) = Unit
+        }
+}
 
     private fun setupDarkMode() {
 
-        // Dark mode requires a separate DayNight theme
-        // implementation and replacement of fixed XML colors.
-        // Disable the switch until that implementation is ready.
-        binding.switchDarkMode.isChecked = false
-        binding.switchDarkMode.isEnabled = false
+    // Restore the user's previously saved appearance preference.
+    val darkModeEnabled =
+        SettingsPreferences.isDarkModeEnabled(this)
 
-        binding.tvMoreSettings.text =
-            "Dark mode and additional language options are coming soon."
+    // Display the saved state before registering the listener.
+    binding.switchDarkMode.isChecked = darkModeEnabled
+    binding.switchDarkMode.isEnabled = true
+
+    binding.tvMoreSettings.text =
+    if (darkModeEnabled) {
+        getString(R.string.dark_mode_enabled)
+    } else {
+        getString(R.string.dark_mode_hint)
     }
+
+    // Save the preference and apply the theme when the switch changes.
+    binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+
+        SettingsPreferences.setDarkModeEnabled(
+            this,
+            isChecked
+        )
+
+       binding.tvMoreSettings.text =
+    if (isChecked) {
+        getString(R.string.dark_mode_enabled)
+    } else {
+        getString(R.string.light_mode_enabled)
+    }
+
+        val nightMode =
+            if (isChecked) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+
+        AppCompatDelegate.setDefaultNightMode(nightMode)
+    }
+}
 
     private fun setupButtons() {
 
@@ -85,18 +189,19 @@ class SettingsActivity : ComponentActivity() {
     private fun showLogoutConfirmation() {
 
         AlertDialog.Builder(this)
-            .setTitle("Logout")
-            .setMessage(
-                "Are you sure you want to log out of HungryBuddy?"
-            )
-            .setPositiveButton("Logout") { _, _ ->
+            .setTitle(getString(R.string.logout_confirmation_title))
+            .setMessage(getString(R.string.logout_confirmation_message))
+            .setPositiveButton(getString(R.string.logout)) { _, _ ->
 
                 // Sign out from Firebase Authentication.
                 auth.signOut()
+                // Stop scheduled favourite synchronisation on logout.
+                FavoriteSyncScheduler.cancelSync(this)
+                InactivityReminderScheduler.cancel(this)
 
                 Toast.makeText(
                     this,
-                    "Logged out successfully!",
+                   getString(R.string.logout_success),
                     Toast.LENGTH_SHORT
                 ).show()
 

@@ -1,9 +1,18 @@
-
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
+ alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
 }
+// Load local release signing credentials.
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties()
 
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.inputStream().use { stream ->
+        keystoreProperties.load(stream)
+    }
+}
 android {
     namespace = "com.example.hungrybuddy"
     compileSdk = 37
@@ -18,12 +27,26 @@ android {
         testInstrumentationRunner =
             "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildTypes {
-        release {
-            optimization {
-                enable = false
+    signingConfigs {
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
             }
+        }
+    }
+
+     buildTypes {
+       release {
+          if (keystorePropertiesFile.exists()) {
+             signingConfig = signingConfigs.getByName("release")
+            }
+
+           optimization {
+              enable = false
+           }
         }
     }
 
@@ -40,6 +63,11 @@ android {
 
 dependencies {
 
+	// Room - local offline favourites database
+implementation(libs.androidx.room.runtime)
+implementation(libs.androidx.room.ktx)
+ksp(libs.androidx.room.compiler)
+
     // Traditional Android Views
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
@@ -55,6 +83,7 @@ dependencies {
     // Lifecycle and ViewModel
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
+    implementation("androidx.lifecycle:lifecycle-process:2.9.4")
 
     // Kotlin Coroutines and StateFlow support
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
@@ -66,9 +95,17 @@ dependencies {
     // Glide - Recipe images in XML ImageViews
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
-    // Firebase Authentication
-    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
-    implementation("com.google.firebase:firebase-auth")
+   // Firebase Authentication and Cloud Firestore
+implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+implementation("com.google.firebase:firebase-auth")
+implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-messaging")
+
+// Await Firebase Tasks using Kotlin Coroutines
+implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
+
+    // WorkManager - reliable background synchronisation
+    implementation("androidx.work:work-runtime-ktx:2.12.0")
 
     // Unit testing
     testImplementation(libs.junit)

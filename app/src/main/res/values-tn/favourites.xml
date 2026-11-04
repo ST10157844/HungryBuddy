@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favourites_save_button">Boloka mo go tse o di ratang</string>
+    <string name="favourites_remove_button">Tlosa mo go tse o di ratang</string>
+    <string name="favourites_saved_message">E tsentswe mo go tse o di ratang.</string>
+    <string name="favourites_removed_message">E ntshitswe mo go tse o di ratang.</string>
+    <string name="favourites_sign_in_message">Tsena mo akhaonteng go boloka tse o di ratang.</string>
+    <string name="favourites_error_message">Ga go a kgonega go fetola tse o di ratang.</string>
+<string name="nav_favourites">Tse ke di ratang</string>
+<string name="favourites_title">Diresiphi tse ke di ratang</string>
+<string name="favourites_subtitle">Diresiphi tse o di bolokileng di teng le fa o se mo inthaneteng.</string>
+<string name="favourites_empty">Ga o ise o boloke resipe. Bula resipe mme o tlhophe Boloka mo go tse o di ratang.</string>
+</resources>

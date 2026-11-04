@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FFF9F2">
+    android:background="@color/hb_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,18 +15,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HungryBuddy"
+            android:text="@string/app_name"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="#E66B31"
+            android:textColor="@color/hb_orange"
             android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome back! Sign in to discover recipes."
+            android:text="@string/login_welcome"
             android:textSize="16sp"
-            android:textColor="#555555"
+            android:textColor="@color/hb_text_secondary"
             android:gravity="center"
             android:layout_marginBottom="32dp" />
 
@@ -34,7 +34,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email address"
+            android:hint="@string/email_address"
             android:inputType="textEmailAddress"
             android:autofillHints="emailAddress"
             android:layout_marginBottom="16dp" />
@@ -43,7 +43,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:autofillHints="password"
             android:layout_marginBottom="24dp" />
@@ -52,16 +52,16 @@
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:backgroundTint="#E66B31"
-            android:textColor="#FFFFFF" />
+            android:text="@string/login"
+            android:backgroundTint="@color/hb_orange"
+            android:textColor="@color/hb_on_accent" />
 
         <TextView
             android:id="@+id/tvRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? Register"
-            android:textColor="#E66B31"
+            android:text="@string/login_register_prompt"
+            android:textColor="@color/hb_orange"
             android:textSize="15sp"
             android:padding="16dp"
             android:layout_marginTop="16dp" />
