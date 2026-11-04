@@ -30,3 +30,9 @@ Thumbs.db
 
 # Ignore Android Studio module files.
 *.iml
+
+# Ignore Android release signing credentials and keystores.
+keystore.properties
+*.jks
+*.keystore
+*.p12

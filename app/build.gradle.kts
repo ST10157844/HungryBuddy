@@ -1,10 +1,18 @@
-
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
  alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
 }
+// Load local release signing credentials.
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties()
 
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.inputStream().use { stream ->
+        keystoreProperties.load(stream)
+    }
+}
 android {
     namespace = "com.example.hungrybuddy"
     compileSdk = 37
@@ -19,12 +27,26 @@ android {
         testInstrumentationRunner =
             "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildTypes {
-        release {
-            optimization {
-                enable = false
+    signingConfigs {
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
             }
+        }
+    }
+
+     buildTypes {
+       release {
+          if (keystorePropertiesFile.exists()) {
+             signingConfig = signingConfigs.getByName("release")
+            }
+
+           optimization {
+              enable = false
+           }
         }
     }
 
